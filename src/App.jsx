@@ -38,23 +38,27 @@ import nogif7 from "./assets/GifData/No/RejectNo.gif";
 import nogif8 from "./assets/GifData/No/breakRej7.gif";
 
 //! yes - Music Importing
-import yesmusic1 from "./assets/AudioTracks/Love_LoveMeLikeYouDo.mp3";
-import yesmusic2 from "./assets/AudioTracks/Love_EDPerfect.mp3";
+// import yesmusic1 from "./assets/AudioTracks/Love_LoveMeLikeYouDo.mp3";
+import yesmusic1 from "./assets/AudioTracks/Menulodni.mp3";
+// import yesmusic2 from "./assets/AudioTracks/Love_EDPerfect.mp3";
+import yesmusic2 from "./assets/AudioTracks/DujiVaarPyar.mp3";
 import yesmusic3 from "./assets/AudioTracks/Love_Nadaaniyan.mp3";
 import yesmusic4 from "./assets/AudioTracks/Love_JoTumMereHo.mp3";
+import yesmusic5 from "./assets/AudioTracks/TereSangYaara.mp3";
 //! no - Music Importing
-import nomusic1 from "./assets/AudioTracks/Rejection_WeDontTalkAnyMore.mp3";
-import nomusic2 from "./assets/AudioTracks/Rejection_LoseYouToLoveMe.mp3";
-import nomusic3 from "./assets/AudioTracks/Reject_withoutMe.mp3";
-import nomusic4 from "./assets/AudioTracks/Neutral_Base_IHateU.mp3";
-import nomusic5 from "./assets/AudioTracks/Reject1_TooGood.mp3";
+import nomusic1 from "./assets/AudioTracks/Terasath.mp3";
+import nomusic2 from "./assets/AudioTracks/MujheApneSirhanePe.mp3";
+import nomusic3 from "./assets/AudioTracks/terejeha.mp3";
+import nomusic4 from "./assets/AudioTracks/PehleBhiMein.mp3";
+import nomusic5 from "./assets/AudioTracks/HumnavaMere.mp3";
 
 const YesGifs = [yesgif0, yesgif1, yesgif2, yesgif3, yesgif9, yesgif10, yesgif11, yesgif12, yesgif13, yesgif14, yesgif15];
 const NoGifs = [nogif0, nogif0_1, nogif1, nogif2, nogif3, nogif4, nogif5, nogif6, nogif7, nogif8];
-const YesMusic = [yesmusic1, yesmusic3, yesmusic4, yesmusic2];
+const YesMusic = [yesmusic1, yesmusic2, yesmusic3, yesmusic4, yesmusic5];
 const NoMusic = [nomusic1, nomusic2, nomusic3, nomusic4, nomusic5];
 
 export default function Page() {
+  const yesEarlyAudioRef = useRef(null);
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
   const [finalizedYes, setFinalizedYes] = useState(false); // new: after overlay close show final view
@@ -229,7 +233,7 @@ export default function Page() {
       "Dil kah raha hai tum yes bolne wali ho… 💕",
       "Aapko bura na lage isliye hi main darr gaya tha…",
       "Ek haan se mera poora din ban jayega 😌",
-      "Tumhari smile yaad aa rahi hai… phir se socho?",
+      "Tumhari bahut yaad aa rahi hai… phir se socho?",
       "Main sach me tumhari feelings ki respect karta hoon ❤️",
       "Ek baar softly soch lo, please 😊"
     ];
@@ -240,6 +244,10 @@ export default function Page() {
   // playful Swal for early yes (keeps original respectful tone)
   useEffect(() => {
     if (yesPressed && noCount < 4 && !popupShown) {
+      const audio = new Audio(YesMusic[0]);
+      yesEarlyAudioRef.current = audio;
+      audio.play();
+
       Swal.fire({
         title: "Meri khushi ka thoda jhatka! 🥰",
         html: `<div style="text-align:left;">
@@ -256,9 +264,18 @@ export default function Page() {
           right
           no-repeat
         `,
+        didClose: () => {
+           // STOP MUSIC when popup closes
+        if (yesEarlyAudioRef.current) {
+          yesEarlyAudioRef.current.pause();
+          yesEarlyAudioRef.current.currentTime = 0;
+          yesEarlyAudioRef.current = null;
+        }
+        }
       });
       setPopupShown(true);
       setYesPressed(false);
+
     }
   }, [yesPressed, noCount, popupShown]);
 
@@ -283,7 +300,6 @@ export default function Page() {
         `,
       });
     }
-    console.log(noCount);
 
   }, [noCount]);
 
@@ -362,7 +378,7 @@ export default function Page() {
       <div className="block mb-5 w-full">
         <div
           style={{
-            marginTop: 16,
+            marginTop: 8,
             display: "flex",
             gap: 12,
             justifyContent: "center",
@@ -424,7 +440,7 @@ export default function Page() {
                 style={{ fontSize: yesButtonSize }}
                 onClick={handleYesClick}
               >
-                Yes
+                Haa
               </button>
               <button
                 onMouseEnter={handleMouseEnterNo}
@@ -432,7 +448,7 @@ export default function Page() {
                 onClick={handleNoClick}
                 className="bg-rose-500 hover:bg-rose-600 rounded-lg text-white font-bold py-2 px-4"
               >
-                {noCount === 0 ? "No" : getNoButtonText()}
+                {noCount === 0 ? "Nahi? 😟" : getNoButtonText()}
               </button>
             </div>
 
@@ -482,12 +498,26 @@ export default function Page() {
           }}>
             <div style={{ fontSize: 72 }}>💖</div>
             <h2 style={{ fontFamily: "Merriweather, serif", color: "#b22f2f", fontSize: 28, margin: "6px 0" }}>Thank you ❤️</h2>
-            <p style={{ color: "#6b6b6b", fontSize: 16, margin: "8px 0" }}>Tumne 'Haan' bola — mera dil bhar aaya.</p>
+            <p style={{ color: "#6b6b6b", fontSize: 16, margin: "8px 0" }}>Tumne 'Haa' bola — mera dil bhar aaya.</p>
             <div style={{ fontFamily: "Dancing Script, cursive", fontSize: 22, color: "#b22f2f", marginTop: 8 }}>
               I love you so much
             </div>
 
             <div style={{ marginTop: 16, display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="https://wa.me/8209439197"
+                onClick={() => {
+                  // close overlay and show final celebration content (marquee + gifs)
+                  setShowThanksOverlay(false);
+                  setFinalizedYes(true);
+                  setYesPressed(true);
+                  // stop audio when closing? keep if you prefer playing
+                }}
+                target="_blank"
+                className="bg-rose-500 text-white font-bold py-2 px-6 rounded-lg"
+              >
+                Send Message ✨
+              </a>
+
               <button
                 onClick={() => {
                   // close overlay and show final celebration content (marquee + gifs)
@@ -528,9 +558,10 @@ export default function Page() {
 const Footer = () => {
   return (
     <a
-      className="fixed bottom-2 right-2 backdrop-blur-md opacity-80 hover:opacity-95 border p-1 rounded border-rose-300 pointer-events-none"
-      href="javascript:void(0)"
+      className="fixed bottom-2 right-2 backdrop-blur-md opacity-80 hover:opacity-95 border p-1 rounded border-rose-300"
+      href="https://wa.me/8209439197"
       rel="noopener noreferrer"
+      target="_blank"
     >
       Made with{" "}
       <span role="img" aria-label="heart">
