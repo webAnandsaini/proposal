@@ -230,11 +230,11 @@ export default function Page() {
       "Main wait kar sakta hoon… ek baar aur socho ❤️",
       "Please… bas ek chhota sa chance?",
       "Mujhe lagta hai tum haan kehogi…",
-      "Dil kah raha hai tum yes bolne wali ho… 💕",
-      "Aapko bura na lage isliye hi main darr gaya tha…",
-      "Ek haan se mera poora din ban jayega 😌",
-      "Tumhari bahut yaad aa rahi hai… phir se socho?",
-      "Main sach me tumhari feelings ki respect karta hoon ❤️",
+      "Dil kah raha hai tum haa bolne wali ho… 💕",
+      "Main bas is baat se dar jata hu… ki kahi tum uncomfortable feel na karo.",
+      "Ek haan se meri puri life jayegi 😌",
+      "Tumhari bahut yaad aati hai… phir se socho?",
+      "Main sach me tumhari feelings ki respect karta hu ❤️",
       "Ek baar softly soch lo, please 😊"
     ];
 
@@ -284,9 +284,11 @@ export default function Page() {
       Swal.fire({
         title: "Real love always finds a way… ❤️",
         html: `<div style="text-align:left;">
-                <p>Chahe tum jitni baar ‘No’ kaho… mera pyaar utna hi strong hota ja raha hai.</p>
-                <p>Main kabhi force nahi karunga… bas itna chahta hu ki tum ek baar dil se socho.</p>
-                <p style="margin-top:10px;font-weight:600;">‘Real love always loves you, even when you push it away.’</p>
+                <p>Chahe tum jitni baar ‘No’ kaho… mera pyar utna hi strong hota ja raha hai.</p>
+                <p style="margin: 5px 0;">Main kabhi force nahi karunga… bas itna chahta hu ki tum ek bar dil se socho. </p>
+                <p>Kabhi-kabhi ek chhota sa chance hi kaafi hota hai kisi ko samajhne ke liye…</p>
+                <p style="margin: 5px 0;">aur main sirf utna hi chance maang raha hoon. </p>
+                <p style="margin-top:15px;font-weight:600;">‘Real love always loves you, even when you push it away.’</p>
                </div>`,
         width: 850,
         padding: "2em",
@@ -387,7 +389,7 @@ export default function Page() {
         >
           {/* Read Letter button: styled, accessible and mobile-friendly */}
           <a
-            href="/letter.pdf"
+            href="/Letter.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="no-underline"
