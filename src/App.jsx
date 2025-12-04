@@ -232,7 +232,7 @@ export default function Page() {
       "Mujhe lagta hai tum haan kehogi…",
       "Dil kah raha hai tum haa bolne wali ho… 💕",
       "Main bas is baat se dar jata hu… ki kahi tum uncomfortable feel na karo.",
-      "Ek haan se meri puri life jayegi 😌",
+      "Ek haan se meri puri life ban jayegi 😌",
       "Tumhari bahut yaad aati hai… phir se socho?",
       "Main sach me tumhari feelings ki respect karta hu ❤️",
       "Ek baar softly soch lo, please 😊"
