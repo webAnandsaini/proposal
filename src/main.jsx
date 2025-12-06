@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import Preloader from './Preloaders/preloader1.jsx';
 import './index.css';
+import PasswordGate from './PasswordGate.jsx';
 
 function Root() {
   const [loading, setLoading] = useState(true);
@@ -13,10 +14,13 @@ function Root() {
   }, []);
 
   return (
-    <React.StrictMode>
-      {/* <App /> */}
-      {loading ? <Preloader /> : <App />}
-    </React.StrictMode>
+    // <React.StrictMode>
+    //   {/* <App /> */}
+    //   {loading ? <Preloader /> : <App />}
+    // </React.StrictMode>
+    <PasswordGate>
+      <App />
+    </PasswordGate>
   );
 }
 
